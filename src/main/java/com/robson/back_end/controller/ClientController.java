@@ -16,8 +16,8 @@ public class ClientController {
     @Autowired
     ClientService clientService;
     @GetMapping
-    public List<ClientResponsyDTO> findAll() {
-        List<Client> list = clientService.findAll();
+    public List<ClientResponsyDTO> findAll(@RequestParam(name = "name", defaultValue = "") String name) {
+        List<Client> list = clientService.findAll(name);
         return list.stream().map(ClientResponsyDTO::new).toList();
     }
     @PostMapping

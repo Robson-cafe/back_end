@@ -15,8 +15,13 @@ public class ClientService {
     ClientRepository clientRepository;
 
 
-    public List<Client> findAll() {
-        return clientRepository.findAll();
+    public List<Client> findAll(String name) {
+        if(name.equals("")) {
+            return clientRepository.findAll();
+        }
+        else {
+            return clientRepository.findAllByNameIgnoreCase(name);
+        }
     }
 
     public ClientResponsyDTO save(ClientRequestDTO clientRequestDTO) {

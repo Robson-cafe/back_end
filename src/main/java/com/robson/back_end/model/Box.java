@@ -1,17 +1,20 @@
 package com.robson.back_end.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
+
+@Entity (name = "BOX")
+
 public class Box {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "box_id")
     Long id;
     String name;
+
     int capacity;
     String create_by;
 

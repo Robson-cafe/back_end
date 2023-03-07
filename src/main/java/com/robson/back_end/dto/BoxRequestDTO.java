@@ -1,20 +1,18 @@
 package com.robson.back_end.dto;
 
-public class BoxDTO {
-    String name;
-    String capacity;
+import com.robson.back_end.model.Box;
+import com.robson.back_end.model.Client;
 
-    public BoxDTO(
-        String name,
-        String capacity
-    )
-    {
+public class BoxRequestDTO {
+    String name;
+    int capacity;
+
+    public BoxRequestDTO(String name, int capacity, String create_by) {
         this.name = name;
         this.capacity = capacity;
     }
 
-    public BoxDTO()
-    {
+    public BoxRequestDTO() {
     }
 
     public String getName() {
@@ -25,11 +23,11 @@ public class BoxDTO {
         this.name = name;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 }
