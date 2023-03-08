@@ -11,9 +11,14 @@ public class ClientResponsyDTO {
         this.login = login;
     }
 
-    public ClientResponsyDTO(Client client) {
+    public ClientResponsyDTO(Client client)
+    {
         this.name = client.getName();
         this.login = client.getLogin();
+    }
+
+    public ClientResponsyDTO()
+    {
     }
 
     public String getName() {
