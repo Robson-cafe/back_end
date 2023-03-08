@@ -38,4 +38,10 @@ public class ClientController {
             @RequestBody ClientRequestDTO clientRequestDTO) {
         return clientService.upDate(id, clientRequestDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(
+            @PathVariable(name = "id") Long id) {
+        return clientService.delete(id);
+    }
 }

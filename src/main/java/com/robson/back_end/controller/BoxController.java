@@ -45,4 +45,10 @@ public class BoxController
             @RequestBody BoxRequestDTO boxRequestDTO) {
         return boxService.upDate(id, boxRequestDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(
+            @PathVariable(name = "id") Long id) {
+        return boxService.delete(id);
+    }
 }

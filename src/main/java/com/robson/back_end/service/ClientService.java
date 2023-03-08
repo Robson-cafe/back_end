@@ -4,6 +4,7 @@ import com.robson.back_end.dto.ClientRequestDTO;
 import com.robson.back_end.dto.ClientResponsyDTO;
 import com.robson.back_end.model.Client;
 import com.robson.back_end.repository.ClientRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class ClientService {
     @Autowired
     ClientRepository clientRepository;
 
-
+    @Transactional
     public List<Client> findAll(String name) {
         if(name.equals("")) {
             return clientRepository.findAll();
@@ -28,11 +29,13 @@ public class ClientService {
         }
     }
 
+    @Transactional
     public ClientResponsyDTO save(ClientRequestDTO clientRequestDTO) {
         Client client = clientRequestDTO.toClient();
         return new ClientResponsyDTO(clientRepository.save(client));
     }
 
+    @Transactional
     public ResponseEntity<Object> find(Long id) {
         Optional<Client> clientOptional = clientRepository.findById(id);
         if(clientOptional.isPresent()) {
@@ -43,6 +46,7 @@ public class ClientService {
         }
     }
 
+    @Transactional
     public ResponseEntity<Object> upDate(Long id, ClientRequestDTO clientRequestDTO) {
         // achar
         Optional<Client> clientOptional = clientRepository.findById(id);
@@ -69,5 +73,18 @@ public class ClientService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
         }
 
+    }
+    @Transactional
+    public ResponseEntity<Object> delete(Long id) {
+        Optional<Client> clientOptional = clientRepository.findById(id);
+        if(clientOptional.isPresent()) {
+            Client client = clientOptional.get();
+
+            clientRepository.delete(client);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
+        }
     }
 }
