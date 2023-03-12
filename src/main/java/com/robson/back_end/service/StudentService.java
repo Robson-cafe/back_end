@@ -6,8 +6,11 @@ import com.robson.back_end.dto.StudentRequestDTO;
 import com.robson.back_end.dto.StudentResponseDTO;
 import com.robson.back_end.model.Client;
 import com.robson.back_end.model.Student;
+import com.robson.back_end.model.Team;
 import com.robson.back_end.repository.ClientRepository;
 import com.robson.back_end.repository.StudentRepository;
+import com.robson.back_end.repository.TeamRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +26,11 @@ public class StudentService {
 
     @Autowired
     ClientRepository clientRepository;
+
+    @Autowired
+    TeamRepository teamRepository;
+
+    @Transactional
     public ResponseEntity<Object> save(StudentRequestDTO studentRequestDTO) {
         ClientRequestDTO clientRequestDTO = new ClientRequestDTO();
         BeanUtils.copyProperties(studentRequestDTO, clientRequestDTO);
@@ -50,5 +58,26 @@ public class StudentService {
         else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estudante não encontrado.");
         }
+    }
+
+    @Transactional
+    public ResponseEntity<Object> enroll(Long student_Id, Long team_Id) {
+        Optional<Student> studentOptional = studentRepository.findById(student_Id);
+
+        if(studentOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Estudante não encontrado.");
+        }
+
+        Optional<Team> teamOptional = teamRepository.findById(team_Id);
+        if(teamOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Team não encontrado.");
+        }
+
+        Student student = studentOptional.get();
+        Team team = teamOptional.get();
+
+        student.getTeams().add(team);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(new StudentResponseDTO(studentRepository.save(student)));
     }
 }
