@@ -35,7 +35,6 @@ public class ClientService {
         return new ClientResponsyDTO(clientRepository.save(client));
     }
 
-    @Transactional
     public ResponseEntity<Object> find(Long id) {
         Optional<Client> clientOptional = clientRepository.findById(id);
         if(clientOptional.isPresent()) {

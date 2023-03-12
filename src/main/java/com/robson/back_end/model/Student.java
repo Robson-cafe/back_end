@@ -8,7 +8,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "regitration")
+    @Column(name = "registration")
     String registration;
 
     @Column(name = "paid")

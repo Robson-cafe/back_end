@@ -21,6 +21,8 @@ public class Client {
     @Column(nullable = false)
     String password;
 
+    @OneToOne(targetEntity = Student.class, cascade = CascadeType.ALL, mappedBy = "client")
+    Student student;
     public Client(String name, String login, String password) {
         this.name = name;
         this.login = login;
@@ -30,6 +32,13 @@ public class Client {
     public Client() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }

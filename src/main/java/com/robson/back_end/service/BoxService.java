@@ -21,7 +21,6 @@ public class BoxService {
     @Autowired
     BoxRepository boxRepository;
 
-    @Transactional
     public List<BoxResponseDTO> findAll(String name, int min, int max) {
         return boxRepository.findAllByNameContainingIgnoreCaseAndCapacityGreaterThanEqualAndCapacityLessThanEqual(name, min, max).stream().map(BoxResponseDTO::new).toList();
     }
@@ -36,7 +35,6 @@ public class BoxService {
         return boxRequestDTO;
     }
 
-    @Transactional
     public ResponseEntity<Object> findById(Long id) {
         Optional<Box> boxOptional = boxRepository.findById(id);
         if(boxOptional.isPresent()) {
