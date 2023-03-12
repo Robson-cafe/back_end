@@ -23,7 +23,6 @@ public class Box {
     @OneToMany(targetEntity = Team.class, cascade = CascadeType.ALL, mappedBy = "box")
     Set<Team> teams;
 
-
     public Box(Long id, String name, int capacity, String create_by, Set<Team> teams) {
         this.id = id;
         this.name = name;

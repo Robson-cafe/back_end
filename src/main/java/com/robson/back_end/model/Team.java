@@ -11,6 +11,8 @@ public class Team {
     //aluno matricula
     @Column(name = "schedule")
     String schedule; // TODO: mudar para dayosweek end local time
+    // 35_19 : terça e quinta as 19
+    // 246_19 : segunda quarta e sexta as 17
 
     @ManyToOne(targetEntity = Box.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "box_id")
