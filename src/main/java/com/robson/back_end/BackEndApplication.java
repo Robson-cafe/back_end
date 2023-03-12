@@ -11,3 +11,21 @@ public class BackEndApplication {
 	}
 
 }
+//conexão com h2
+/*spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+spring.datasource.url=jdbc:h2:mem:reservasDB
+spring.datasource.username=admin
+spring.datasource.password=
+
+substituir no pom.xml
+<dependency>
+	<groupId>com.h2database</groupId>
+	<artifactId>h2</artifactId>
+	<scope>runtime</scope>
+</dependency>
+*/
