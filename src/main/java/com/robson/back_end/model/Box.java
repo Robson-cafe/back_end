@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 //import jakarta.persistence.GenerationType;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity (name = "BOX")
 
 public class Box {
@@ -18,22 +20,28 @@ public class Box {
     int capacity;
     String create_by;
 
+    @OneToMany(targetEntity = Team.class, cascade = CascadeType.ALL, mappedBy = "box")
+    Set<Team> teams;
 
-    public Box(
-        Long id,
-        String name,
-        int capacity,
-        String create_by
-    )
-    {
+
+    public Box(Long id, String name, int capacity, String create_by, Set<Team> teams) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
         this.create_by = create_by;
+        this.teams = teams;
     }
 
     public Box()
     {
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
     }
 
     public Long getId() {
