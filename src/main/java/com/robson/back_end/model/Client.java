@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Client implements UserDetails {
@@ -32,6 +33,13 @@ public class Client implements UserDetails {
         this.login = login;
         this.password = password;
     }
+
+    @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
+        @JoinTable(name = "client_role",
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+        )
+    List<Role> roles;
 
     public Client() {
     }
@@ -61,7 +69,7 @@ public class Client implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return roles;
     }
 
     public String getPassword() {

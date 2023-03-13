@@ -3,6 +3,7 @@ package com.robson.back_end.config.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,7 +20,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         //System.out.println("Using default configure(HttpSecurity). If subclassed this will potentially override subclass configure(HttpSecurity).");
         //http.formLogin(); cria login padrão spring
         http.httpBasic();
-        http.authorizeHttpRequests().anyRequest().authenticated();
+        http.authorizeHttpRequests()
+                .antMatchers(HttpMethod.DELETE, "/clients/**").hasRole("ADMIN")
+                .anyRequest().authenticated();
         http.csrf().disable();
     }
 
