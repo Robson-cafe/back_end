@@ -10,7 +10,7 @@ import com.robson.back_end.model.Team;
 import com.robson.back_end.repository.ClientRepository;
 import com.robson.back_end.repository.StudentRepository;
 import com.robson.back_end.repository.TeamRepository;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -4,7 +4,7 @@ import com.robson.back_end.dto.ClientRequestDTO;
 import com.robson.back_end.dto.ClientResponsyDTO;
 import com.robson.back_end.model.Client;
 import com.robson.back_end.repository.ClientRepository;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

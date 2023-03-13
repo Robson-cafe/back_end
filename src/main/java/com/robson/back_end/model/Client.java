@@ -1,6 +1,6 @@
 package com.robson.back_end.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Client {

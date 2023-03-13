@@ -28,4 +28,6 @@ substituir no pom.xml
 	<artifactId>h2</artifactId>
 	<scope>runtime</scope>
 </dependency>
+
+<version>3.0.4</version>
 */
