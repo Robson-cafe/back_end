@@ -7,7 +7,7 @@ import com.robson.back_end.model.Box;
 import com.robson.back_end.model.Client;
 import com.robson.back_end.repository.BoxRepository;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

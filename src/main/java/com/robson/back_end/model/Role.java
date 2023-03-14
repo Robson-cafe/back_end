@@ -3,7 +3,7 @@ package com.robson.back_end.model;
 import com.robson.back_end.enums.RoleNames;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Role implements GrantedAuthority {
@@ -13,8 +13,9 @@ public class Role implements GrantedAuthority {
     Long id;
 
     @Enumerated(EnumType.STRING)
-            @Column(name = "role")
+    @Column(name = "role")
     RoleNames role;
+
     @Override
     public String getAuthority() {
         return role.toString();

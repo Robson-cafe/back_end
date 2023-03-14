@@ -1,10 +1,10 @@
 package com.robson.back_end.model;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-import javax.persistence.*;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 import java.util.Set;
 

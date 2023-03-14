@@ -30,4 +30,6 @@ substituir no pom.xml
 </dependency>
 
 <version>3.0.4</version>
+<version>2.6.3</version>
+
 */

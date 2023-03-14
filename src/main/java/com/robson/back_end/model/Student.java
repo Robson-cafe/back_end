@@ -1,6 +1,6 @@
 package com.robson.back_end.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
